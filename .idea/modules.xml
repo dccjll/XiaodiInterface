@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/XiaodiInterface.iml" filepath="$PROJECT_DIR$/XiaodiInterface.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaodicoreinterface/xiaodicoreinterface.iml" filepath="$PROJECT_DIR$/xiaodicoreinterface/xiaodicoreinterface.iml" />
     </modules>
   </component>
 </project>
