@@ -5,9 +5,10 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 
-import com.bluetoothle.LogUtil;
 import com.yolanda.nohttp.Headers;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.RequestMethod;
@@ -319,6 +320,30 @@ public class NoHttpUtil {
             data.put(keys[index], values[index]);
         }
         return data;
+    }
+
+    public static boolean checkNetworkAvailable(Context context) {
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity == null) {
+            return false;
+        } else {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null) {
+                for (NetworkInfo anInfo : info) {
+                    if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
+                        NetworkInfo netWorkInfo = anInfo;
+                        if (netWorkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                            LogUtil.d(tag, "wifi network");
+                            return true;
+                        } else if (netWorkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+                            LogUtil.d(tag, "3G/4G network");
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 }

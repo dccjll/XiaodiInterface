@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.dsm.xiaodicoreinterface.util.LogUtil;
 import com.dsm.xiaodicoreinterface.util.NoHttpUtil;
+import com.dsm.xiaodicoreinterface.util.RegexUtil;
 import com.dsm.xiaodicoreinterface.util.StringUtil;
 
 import java.util.Map;
@@ -40,11 +41,109 @@ public class RequestUtil {
                 LogUtil.e("error " + key);
                 return false;
             }
-            if("mobile".equalsIgnoreCase(key) && (StringUtil.isEmpty(value.toString()) || value.toString().length() != 11)){
+            if("checkCodeType".equalsIgnoreCase(key) && (!"1".equalsIgnoreCase(value.toString()) && !"2".equalsIgnoreCase(value.toString()))){
                 LogUtil.e("error " + key);
                 return false;
             }
-            if("password".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+            if(("mobile".equalsIgnoreCase(key) || "account".equalsIgnoreCase(key) || "user.account".equalsIgnoreCase(key) || "user.item1".equalsIgnoreCase(key) || "userCode".equalsIgnoreCase(key) || "useraccout".equalsIgnoreCase(key) || "userMobile".equalsIgnoreCase(key)) && (StringUtil.isEmpty(value.toString()) || value.toString().length() != 11)){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if(("password".equalsIgnoreCase(key) || "user.password".equalsIgnoreCase(key)) && (StringUtil.isEmpty(value.toString()) || !RegexUtil.regexChars(value.toString(), 8, 20))){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("shortNum".equalsIgnoreCase(key) && StringUtil.isEmpty(String.valueOf(value))){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("user.nickname".equalsIgnoreCase(key) && (StringUtil.isNotEmpty(value.toString()) && value.toString().length() > 20)){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("user.cardtype".equalsIgnoreCase(key) && (StringUtil.isEmpty(value.toString()) || !"1".equalsIgnoreCase(value.toString()))){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("user.cardnum".equalsIgnoreCase(key) && (StringUtil.isNotEmpty(value.toString()) && !RegexUtil.regexIDCard(value.toString()))){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("user.useraddress".equalsIgnoreCase(key) && (StringUtil.isNotEmpty(value.toString()) && value.toString().length() > 80)){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("imageDates".equalsIgnoreCase(key) && value == null){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("phoneSnnum".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("phoneName".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("phoneType".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("systemVersion".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("phoneSoftversion".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("phoneBlueaddress".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("userType".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("appVersion".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("htmlVersion".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if(("deviceMac".equalsIgnoreCase(key) || "lockseq".equalsIgnoreCase(key)) && !StringUtil.checkAddress(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("deviceNewName".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            try {
+                if("diyOpenType".equalsIgnoreCase(key) && (StringUtil.isEmpty(value.toString()) || Integer.valueOf(value.toString()) < 0 || Integer.valueOf(value.toString()) > 4)){
+                    LogUtil.e("error " + key);
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return false;
+            }
+            try {
+                if("music".equalsIgnoreCase(key) && (StringUtil.isEmpty(value.toString()) || Integer.valueOf(value.toString()) < 0 || Integer.valueOf(value.toString()) > 6)){
+                    LogUtil.e("error " + key);
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return false;
+            }
+            if("diyNumOpenPwd".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
+                LogUtil.e("error " + key);
+                return false;
+            }
+            if("diyGestureOpenPwd".equalsIgnoreCase(key) && StringUtil.isEmpty(value.toString())){
                 LogUtil.e("error " + key);
                 return false;
             }
