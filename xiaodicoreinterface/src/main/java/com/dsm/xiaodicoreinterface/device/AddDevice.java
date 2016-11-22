@@ -1,16 +1,10 @@
 //package com.dsm.xiaodicoreinterface.device;
 //
 //import android.app.Activity;
+//import android.app.Application;
 //import android.bluetooth.BluetoothGatt;
 //import android.bluetooth.BluetoothGattCharacteristic;
 //
-//import com.bluetoothle.core.writeData.OnBLEWriteDataListener;
-//import com.bluetoothle.factory.xiaodilock.OnXIAODIBLEListener;
-//import com.bluetoothle.factory.xiaodilock.protocol.XIAODIBLECMDType;
-//import com.bluetoothle.factory.xiaodilock.received.XIAODIDataReceived;
-//import com.bluetoothle.factory.xiaodilock.received.XIAODIDataReceivedAnalyzer;
-//import com.bluetoothle.factory.xiaodilock.send.XIAODIData;
-//import com.bluetoothle.factory.xiaodilock.send.XIAODISend;
 //import com.dsm.xiaodicoreinterface.base.CheckUtil;
 //import com.dsm.xiaodicoreinterface.base.OnXiaodiListener;
 //import com.dsm.xiaodicoreinterface.util.LogUtil;
@@ -31,7 +25,7 @@
 //
 //public class AddDevice {
 //
-//    private Activity contentActivity;
+//    private Application application;
 //    private String locknameString;
 //    private String lockmacString;
 //    private String metertype;
